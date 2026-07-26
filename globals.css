@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #fcfbf9;
+  color: #10151b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #236bb3;
+  color: #fcfbf9;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fcfbf9;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9d3dc;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #236bb3;
+}
+
+:focus-visible {
+  outline: 2px solid #236bb3;
+  outline-offset: 3px;
+}
+
+[dir="rtl"] .ltr-flip {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] {
+  --font-display: var(--font-ar);
+  --font-body: var(--font-ar);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fine cursor dot — desktop only, subtle */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: #236bb3;
+  pointer-events: none;
+  z-index: 200;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.text-stroke-brand {
+  -webkit-text-stroke: 1.5px #236bb3;
+  color: transparent;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+.animate-marquee-rtl {
+  animation: marquee-rtl 32s linear infinite;
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-slow-spin {
+  animation: slow-spin 40s linear infinite;
+}
+
+@media (hover: none) {
+  .cursor-dot {
+    display: none;
+  }
+}
